@@ -66,11 +66,7 @@ public class IOLab {
             return time;
         }
 
-        catch (FileNotFoundException e){
-            System.out.println("Error: File not found");
-        }
-        catch(MalformedURLException e){
-            System.out.println("Error: Invalid URL");
+       catch (FileNotFoundException | MalformedURLException e){
         }
         catch (IOException e) {
             throw new RuntimeException(e);
