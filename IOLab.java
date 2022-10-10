@@ -55,13 +55,21 @@ public class IOLab {
     public static String readDateTime(String s) {
 
         try{
+            int count =0;
+            String time = "";
 
             URL url = new URL(s);
             Scanner scan = new Scanner(url.openStream());
             String getInput = scan.nextLine();
-
-            int dateTime = getInput.indexOf("datetime");
-            String time = getInput.substring(dateTime+11 , dateTime+43);
+            String arr [] = getInput.split(",");
+            for (String word : arr){
+                count++;
+                if (word.contains("day_of_week")){
+                    time = arr[count-2];
+                }
+            }
+            arr = time.split(":",2);
+            time = arr[1].replaceAll("\"", "");
             System.out.println(time);
             return time;
         }
